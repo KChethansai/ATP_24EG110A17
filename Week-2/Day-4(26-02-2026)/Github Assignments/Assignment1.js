@@ -59,7 +59,7 @@ console.log()
 //Counting if books are long books
 let Books=[book1,book2,book3,book4,book5]
 for(let book of Books){
-    if(book.isLongBook===true){
+    if(book.isLongBook()===true){
         count++
     }
 }
