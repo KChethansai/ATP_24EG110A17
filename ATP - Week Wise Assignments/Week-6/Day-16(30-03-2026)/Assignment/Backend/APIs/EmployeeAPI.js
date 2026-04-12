@@ -18,7 +18,7 @@ employeeApp.post('/employees', async (req, res) => {
 
     res.status(201).json({ message: 'employee Created' })
   } catch (err) {
-    console.error(err) // 👈 THIS will show real error
+    console.error(err)
     res.status(500).json({ message: err.message })
   }
 })
