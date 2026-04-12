@@ -10,7 +10,7 @@ import cors from 'cors'
 const app = exp()
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://atp-24-eg110-a17.vercel.app'],
     credentials: true
   })
 )
@@ -30,7 +30,9 @@ app.use('/auth', commonApp)
 //Connect to DB
 const connectDB = async () => {
   try {
-    await connect('mongodb+srv://KChethanSai:chethansaiK1@cluster0.hvo4hz1.mongodb.net/BlogApp?appName=Cluster0')
+    await connect(
+      'mongodb+srv://KChethanSai:chethansaiK1@cluster0.hvo4hz1.mongodb.net/BlogApp?appName=Cluster0'
+    )
     console.log('DB Connected')
     const port = process.env.PORT
     app.listen(port, () => console.log(`server listening on ${port}`))
