@@ -1,28 +1,25 @@
 import exp from 'express'
+import 'dotenv/config'
 import { connect } from 'mongoose'
 import { employeeApp } from './APis/EmployeeAPI.js'
 import cors from 'cors'
+
 const app = exp()
 
-//add cord middleware
 app.use(
   cors({
-    origin: ['http://localhost:5173']
+    origin: ['http://localhost:5173', 'https://your-vercel-app.vercel.app']
   })
 )
 
-//body parser middleware
 app.use(exp.json())
-
-//path level middleware
 app.use('/employee-api', employeeApp)
 
-//Connect to DB
 const connectDB = async () => {
   try {
-    await connect('mongodb://localhost:27017/febe')
+    await connect(process.env.DB_URL)
     console.log('DB Connected')
-    const port = 4000
+    const port = process.env.PORT || 4000
     app.listen(port, () => console.log(`server listening on ${port}`))
   } catch (err) {
     console.log('Error in DB Connect', err)
