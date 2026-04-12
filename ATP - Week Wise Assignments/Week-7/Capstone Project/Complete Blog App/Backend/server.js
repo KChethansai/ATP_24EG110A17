@@ -1,5 +1,5 @@
 import exp from 'express'
-import { config } from 'dotenv'
+import 'dotenv/config'
 import { connect } from 'mongoose'
 import { userApp } from './APIs/UserAPI.js'
 import { authorApp } from './APIs/AuthorAPI.js'
@@ -30,7 +30,7 @@ app.use('/auth', commonApp)
 //Connect to DB
 const connectDB = async () => {
   try {
-    await connect(process.env.DB_URL)
+    await connect('mongodb+srv://KChethanSai:chethansaiK1@cluster0.hvo4hz1.mongodb.net/BlogApp?appName=Cluster0')
     console.log('DB Connected')
     const port = process.env.PORT
     app.listen(port, () => console.log(`server listening on ${port}`))
