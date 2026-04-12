@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
+import BASE_URL from '../config'
 function CreateEmp() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -18,11 +19,10 @@ function CreateEmp() {
     try {
       setLoading(true)
       //Make http Post request
-      let res = await axios.post(
-        'http://localhost:4000/employee-api/employees',
+      const res = await axios.post(
+        `${BASE_URL}/employee-api/employees`,
         newEmpObj
       )
-
       if (res.status === 201) {
         navigate('/list')
       } else {

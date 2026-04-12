@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import axios from 'axios'
+import BASE_URL from '../config'
 function EditEmployee() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -24,12 +25,10 @@ function EditEmployee() {
     try {
       setLoading(true)
       setError(null)
-
       const res = await axios.put(
-        `http://localhost:4000/employee-api/employees/${state._id}`,
+        `${BASE_URL}/employee-api/employees/${state._id}`,
         modifiedEmp
       )
-
       if (res.status === 200) {
         navigate('/list')
       }
