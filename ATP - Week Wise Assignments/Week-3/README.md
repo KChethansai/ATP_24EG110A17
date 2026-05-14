@@ -15,6 +15,7 @@ Week 3 builds a full backend with MongoDB + Mongoose, password hashing with bcry
 > The `Backend-2` project is identical across all three days, representing iterative development and in-class refinement of the same codebase.
 
 ### Tech Stack
+
 - Node.js + Express.js
 - MongoDB + Mongoose
 - bcryptjs (password hashing)
@@ -45,6 +46,7 @@ Backend-2/
 ### Data Models
 
 **User Schema** (`UserModel.js`)
+
 ```js
 {
   username: String  (required, minLength: 4, maxLength: 6),
@@ -59,6 +61,7 @@ Backend-2/
 ```
 
 **Product Schema** (`ProductModel.js`)
+
 ```js
 {
   productId:   Number (required),
@@ -69,6 +72,7 @@ Backend-2/
 ```
 
 ### Authentication Flow
+
 1. **Register** → `POST /user-api/users` — password is hashed with `bcryptjs` before saving
 2. **Login** → `POST /user-api/auth` — password compared with `bcryptjs.compare`, JWT signed and stored as HTTP-only cookie
 3. **Protected routes** → `verifyToken` middleware reads `req.cookies.token`, verifies JWT, attaches decoded payload to `req.user`
@@ -96,23 +100,28 @@ Backend-2/
 | DELETE | `/product-api/products/:id` | Delete product | Protected |
 
 ### Additional Resource
+
 `Day-6/mongodb-employees.docx` — Practice MongoDB queries on employee data.
 
 ---
 
-## How to Run
+## Setup & Run
 
 ```bash
-cd "Day-6(05-03-2026)/Backend-2"   # or Day-7 / Day-8 — same code
+cd Day-6\(05-03-2026\)/Backend-2
 npm install
-node server.js
 ```
 
-Create a `.env` file in the project root:
-```env
-DB_URL=<your MongoDB connection string>
+Create a `.env` file:
+
+```
 PORT=4000
-SECRET_KEY=<your JWT secret>
+DB_URL=mongodb+srv://<user>:<pass>@cluster.mongodb.net/backend2
+SECRET_KEY=your_jwt_secret
+```
+
+```bash
+node server.js
 ```
 
 Use `req.http` with the VS Code REST Client extension to test all routes.
