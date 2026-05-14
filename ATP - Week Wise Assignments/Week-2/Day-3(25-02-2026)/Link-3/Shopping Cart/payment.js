@@ -1,21 +1,25 @@
-import { reduceStock } from "./product.js";
-import { getCartItems, getCartTotal, clearCart } from "./cart.js";
+import { reduceStock } from './product.js'
+import { getCartItems, getCartTotal, clearCart } from './cart.js'
 
+//process payment, reduce stock, clear cart, return order summary
 function processPayment() {
-  const items = getCartItems();
-  const total = getCartTotal();
+  //get current cart state
+  const items = getCartItems()
+  const total = getCartTotal()
 
-  items.forEach(item => {
-    reduceStock(item.id, item.qty);
-  });
+  //reduce stock for each item
+  items.forEach((item) => {
+    reduceStock(item.id, item.qty)
+  })
 
-  clearCart();
+  //clear cart after payment
+  clearCart()
 
   return {
     items,
     total,
-    status: "Payment Successful"
-  };
+    status: 'Payment Successful'
+  }
 }
 
-export {processPayment}
+export { processPayment }

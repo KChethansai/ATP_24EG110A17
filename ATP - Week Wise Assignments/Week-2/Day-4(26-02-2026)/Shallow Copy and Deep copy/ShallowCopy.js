@@ -1,20 +1,22 @@
+//original user object with nested preferences
 const user = {
-    id: 101,
-    name: "Ravi",
-    preferences: {
-    theme: "dark",
-    language: "en"
-    }
-    };
-    //1. Create a shallow copy of user
-    let copyUser={...user}
-    // 2. Change:
-         // i. name in the copied object
-          //ii. preferences.theme in the copied object
-          //iii .Log both original and copied objects
-          //iv. Observe what changes and what doesn’t
-    copyUser.name='Bhanu'
-    copyUser.preferences.theme='Light'
-    console.log('Original:',user)
-    console.log('Copy:',copyUser)
+  id: 101,
+  name: 'Ravi',
+  preferences: {
+    theme: 'dark',
+    language: 'en'
+  }
+}
 
+//shallow copy — nested objects still share the same reference
+let copyUser = { ...user }
+
+//only affects copyUser (primitive — copied by value)
+copyUser.name = 'Bhanu'
+
+//affects BOTH user and copyUser (object — copied by reference)
+copyUser.preferences.theme = 'Light'
+
+//original.name stays "Ravi" but original.preferences.theme changes to "Light"
+console.log('Original:', user)
+console.log('Copy:', copyUser)

@@ -1,32 +1,21 @@
-function validateTitle(title){
-    if(!title){
-        return 'Title required'
-    }
-    if(title.length<=3){
-        return 'Min 3 char requred'
-    }
-    return 'Title is valid'
+//check title is present and at least 3 chars
+function validateTitle(title) {
+  if (!title) return 'Title required'
+  if (title.length <= 3) return 'Min 3 char required'
+  return 'Title is valid'
 }
 
-
-function validatePriority(priority){
-    const priorities=['low','medium','high']
-    let result=priorities.includes(priority)
-    if(result){
-        return true
-    }
-    else{
-        return 'Invalid prority'
-    }
+//check priority is one of the allowed values
+function validatePriority(priority) {
+  const priorities = ['low', 'medium', 'high']
+  return priorities.includes(priority) ? true : 'Invalid priority'
 }
 
-function validateDueDate(date){
-    let dueDate=new Date('2024-10-20')
-    let today=new Date()
-    if(dueDate>today){
-        return true
-    }
-    return false
+//check due date is in the future
+function validateDueDate(date) {
+  const dueDate = new Date(date)
+  const today = new Date()
+  return dueDate > today
 }
 
-export {validateDueDate,validatePriority,validateTitle}
+export { validateDueDate, validatePriority, validateTitle }
