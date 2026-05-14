@@ -28,11 +28,8 @@ function Home() {
 
   return (
     <div className={pageWrapper}>
-
       {/* HERO */}
       <section className={`${section} text-center py-10`}>
-        <p className={tagClass}>MyBlog</p>
-
         <h1 className={`${pageTitleClass} mt-4 max-w-2xl mx-auto`}>
           A place to read and write things that matter.
         </h1>
@@ -44,19 +41,31 @@ function Home() {
         <div className="flex items-center justify-center gap-3 mt-8">
           {isAuthenticated ? (
             <>
-              <button className={primaryBtn} onClick={() => navigate('/articles')}>
+              <button
+                className={primaryBtn}
+                onClick={() => navigate('/articles')}
+              >
                 Browse Articles
               </button>
-              <button className={secondaryBtn} onClick={() => navigate(getProfilePath())}>
+              <button
+                className={secondaryBtn}
+                onClick={() => navigate(getProfilePath())}
+              >
                 My Profile
               </button>
             </>
           ) : (
             <>
-              <button className={primaryBtn} onClick={() => navigate('/register')}>
+              <button
+                className={primaryBtn}
+                onClick={() => navigate('/register')}
+              >
                 Get Started
               </button>
-              <button className={secondaryBtn} onClick={() => navigate('/login')}>
+              <button
+                className={secondaryBtn}
+                onClick={() => navigate('/login')}
+              >
                 Sign In
               </button>
             </>
@@ -73,15 +82,21 @@ function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className={cardClass}>
             <p className="text-sm font-semibold text-[#1d1d1f] mb-1">Read</p>
-            <p className={mutedText}>Browse articles from authors across different topics.</p>
+            <p className={mutedText}>
+              Browse articles from authors across different topics.
+            </p>
           </div>
           <div className={cardClass}>
             <p className="text-sm font-semibold text-[#1d1d1f] mb-1">Write</p>
-            <p className={mutedText}>Publish your own articles and build an audience.</p>
+            <p className={mutedText}>
+              Publish your own articles and build an audience.
+            </p>
           </div>
           <div className={cardClass}>
             <p className="text-sm font-semibold text-[#1d1d1f] mb-1">Discuss</p>
-            <p className={mutedText}>Leave comments and engage with what you read.</p>
+            <p className={mutedText}>
+              Leave comments and engage with what you read.
+            </p>
           </div>
         </div>
       </section>
@@ -100,7 +115,6 @@ function Home() {
           {isAuthenticated ? 'Go to Articles' : 'Create Account'}
         </button>
       </section>
-
     </div>
   )
 }
